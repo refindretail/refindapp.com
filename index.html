@@ -311,7 +311,7 @@
     }
 
     /* ── HOW IT WORKS ────────────────────────────── */
-    .steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+    .steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; }
     .step {
       background: var(--bg); border-radius: 24px; padding: 36px 30px;
       border: 1px solid var(--primary-light);
@@ -674,6 +674,55 @@
     .footer-links a:hover { color: var(--white); }
     .footer-copy { text-align: center; font-size: 13px; color: rgba(255,255,255,0.3); }
 
+    /* ── STATS ROW ───────────────────────────────── */
+    .stats-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; }
+    .stat-card {
+      background: var(--white); border-radius: 20px; padding: 32px 20px;
+      border: 1px solid var(--primary-light); text-align: center;
+    }
+    .stat-number {
+      font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 42px;
+      color: var(--primary-dark); line-height: 1; margin-bottom: 8px;
+    }
+    .stat-label { font-size: 14px; line-height: 1.55; color: var(--text-secondary); }
+
+    /* ── TRUST & SAFETY ──────────────────────────── */
+    .trust-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
+    .trust-card { background: var(--white); border-radius: 22px; padding: 32px 28px; }
+    .trust-icon { font-size: 32px; margin-bottom: 16px; display: block; }
+    .trust-card h3 {
+      font-family: 'Poppins', sans-serif; font-weight: 600;
+      font-size: 17px; color: var(--text); margin-bottom: 10px;
+    }
+    .trust-card p { font-size: 15px; line-height: 1.7; color: var(--text-secondary); }
+
+    /* ── SELLER CTA BANNER ───────────────────────── */
+    .seller-cta {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary) 100%);
+      padding: 88px 56px; text-align: center;
+    }
+    .seller-cta-pct {
+      font-family: 'Poppins', sans-serif; font-weight: 700;
+      font-size: 80px; color: var(--white); line-height: 1; margin-bottom: 12px;
+    }
+    .seller-cta h2 {
+      font-family: 'Poppins', sans-serif; font-weight: 700;
+      font-size: 42px; letter-spacing: -1px; color: var(--white); margin-bottom: 14px;
+    }
+    .seller-cta p {
+      font-size: 18px; color: rgba(255,255,255,0.8); margin-bottom: 40px;
+      max-width: 520px; margin-left: auto; margin-right: auto; line-height: 1.65;
+    }
+    .btn-cta-light {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: rgba(255,255,255,0.15); color: var(--white);
+      border: 2px solid rgba(255,255,255,0.35);
+      font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 15px;
+      padding: 15px 32px; border-radius: 100px; text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-cta-light:hover { background: rgba(255,255,255,0.25); border-color: rgba(255,255,255,0.6); transform: translateY(-1px); }
+
     /* ── RESPONSIVE ──────────────────────────────── */
     @media (max-width: 1100px) {
       .hb-right, .hb-left { display: none; }
@@ -685,6 +734,8 @@
       .hero h1 { font-size: 50px; }
       .section { padding: 80px 32px; }
       .section-title { font-size: 36px; }
+      .steps { grid-template-columns: repeat(2,1fr); }
+      .stats-row { grid-template-columns: repeat(2,1fr); }
     }
     @media (max-width: 768px) {
       nav { padding: 0 20px; }
@@ -700,6 +751,11 @@
       .section { padding: 64px 20px; }
       .section-title { font-size: 28px; letter-spacing: -0.6px; }
       .steps { grid-template-columns: 1fr; }
+      .stats-row { grid-template-columns: repeat(2,1fr); gap: 14px; }
+      .trust-grid { grid-template-columns: 1fr; }
+      .seller-cta { padding: 64px 20px; }
+      .seller-cta h2 { font-size: 30px; }
+      .seller-cta-pct { font-size: 56px; }
       .feature, .feature.flip { grid-template-columns: 1fr; direction: ltr; gap: 28px; }
       .feature-text h2 { font-size: 26px; }
       .card-scene { padding: 16px 8px; }
@@ -825,7 +881,7 @@
 <section class="section bg-surface">
   <div class="section-inner">
     <p class="eyebrow reveal">How it works</p>
-    <h2 class="section-title reveal d1">Three steps to your next favorite piece</h2>
+    <h2 class="section-title reveal d1">Four steps to your next favorite piece</h2>
     <p class="section-sub reveal d2">From discovery to doorstep, ReFind handles the details so you can focus on the find.</p>
     <div class="steps">
       <div class="step reveal d1">
@@ -835,13 +891,42 @@
       </div>
       <div class="step reveal d2">
         <div class="step-num">2</div>
-        <h3>Make your offer</h3>
+        <h3>Buy or make an offer</h3>
         <p>Love something? Buy outright or send an offer. Real negotiation with real sellers — no bots, no pressure.</p>
       </div>
       <div class="step reveal d3">
         <div class="step-num">3</div>
-        <h3>Get it shipped</h3>
-        <p>Sellers ship fast with tracking included. Your new piece arrives at your door, exactly as described.</p>
+        <h3>Get it shipped fast</h3>
+        <p>Sellers ship with a generated label. Tracking is included from the moment the package leaves their hands.</p>
+      </div>
+      <div class="step reveal d4">
+        <div class="step-num">4</div>
+        <h3>Love it — or re-list it</h3>
+        <p>Keep what fits your life right now. When you're ready to move on, your closet becomes someone else's find.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── STATS ROW ──────────────────────────────────────── -->
+<section class="section bg-surface" style="padding-top: 0;">
+  <div class="section-inner">
+    <div class="stats-row">
+      <div class="stat-card reveal d1">
+        <div class="stat-number">9</div>
+        <div class="stat-label">clothing categories<br>from dresses to outerwear</div>
+      </div>
+      <div class="stat-card reveal d2">
+        <div class="stat-number">4</div>
+        <div class="stat-label">shipping carriers<br>with generated labels</div>
+      </div>
+      <div class="stat-card reveal d3">
+        <div class="stat-number">87%</div>
+        <div class="stat-label">of every sale goes<br>directly to the seller</div>
+      </div>
+      <div class="stat-card reveal d4">
+        <div class="stat-number">5</div>
+        <div class="stat-label">review dimensions<br>for total buyer transparency</div>
       </div>
     </div>
   </div>
@@ -1046,6 +1131,55 @@
       <p>Ten photos, a few measurements, your price. Buyers find you through fit matching — not just keyword search. Ship with a generated label. Get paid directly to your bank.</p>
     </div>
   </div>
+</section>
+
+<!-- ── TRUST & SAFETY ────────────────────────────────── -->
+<section class="section bg-main">
+  <div class="section-inner">
+    <p class="eyebrow reveal">Trust &amp; safety</p>
+    <h2 class="section-title reveal d1">Built to protect every transaction</h2>
+    <p class="section-sub reveal d2">From your first swipe to package delivered, ReFind keeps buyers and sellers safe at every step.</p>
+    <div class="trust-grid">
+      <div class="trust-card reveal d1">
+        <span class="trust-icon">🔒</span>
+        <h3>Secure Payments</h3>
+        <p>Every transaction runs through Stripe. Your card details never touch our servers — industry-standard encryption from checkout to payout.</p>
+      </div>
+      <div class="trust-card reveal d2">
+        <span class="trust-icon">🛡️</span>
+        <h3>Buyer Protection</h3>
+        <p>Received something that doesn't match the listing? Open a dispute within 3 days and our team steps in to make it right.</p>
+      </div>
+      <div class="trust-card reveal d3">
+        <span class="trust-icon">🚩</span>
+        <h3>Reporting &amp; Blocking</h3>
+        <p>Flag suspicious listings or users in one tap. Block anyone you don't want to interact with — instantly, no explanation required.</p>
+      </div>
+      <div class="trust-card reveal d1">
+        <span class="trust-icon">⭐</span>
+        <h3>Detailed Reviews</h3>
+        <p>Buyers rate sellers across five dimensions — accuracy, shipping speed, packaging, communication, and overall experience.</p>
+      </div>
+      <div class="trust-card reveal d2">
+        <span class="trust-icon">🤖</span>
+        <h3>Image Moderation</h3>
+        <p>AI scans every listing photo before it goes live. Inappropriate or misleading images are flagged and reviewed automatically.</p>
+      </div>
+      <div class="trust-card reveal d3">
+        <span class="trust-icon">✅</span>
+        <h3>Account Security</h3>
+        <p>Email verification on sign-up, secure token-based auth, and session management designed to keep your account yours alone.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SELLER CTA BANNER ──────────────────────────────── -->
+<section class="seller-cta">
+  <div class="seller-cta-pct reveal">87%</div>
+  <h2 class="reveal d1">Your closet could be someone's next find.</h2>
+  <p class="reveal d2">List what you don't wear. Every sale goes mostly to you — no listing fees, no surprise deductions, just a fair platform cut.</p>
+  <a href="#download" class="btn-cta-light reveal d3">Start selling →</a>
 </section>
 
 <!-- ── TESTIMONIALS ──────────────────────────────────── -->
