@@ -3,603 +3,1133 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ReFind — Style. Swipe. Shop.</title>
-  <link rel="icon" type="image/png" href="/favicon.png">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <title>ReFind — Shop Pre-Loved Fashion</title>
+  <meta name="description" content="Buy and sell pre-loved women's clothing. Fit matching, real offers, fast shipping.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
   <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
     :root {
-      --primary: #a3b18a;
-      --primary-light: #c8d4bc;
-      --primary-dark: #7a8c68;
-      --secondary: #b8a1c4;
-      --bg: #f5f1e8;
-      --surface: #faf8f3;
-      --text: #3d3028;
+      --primary:        #a3b18a;
+      --primary-light:  #c8d4bc;
+      --primary-dark:   #588157;
+      --secondary:      #b8a1c4;
+      --secondary-light:#e8dff0;
+      --bg:             #f5f1e8;
+      --surface:        #faf8f3;
+      --text:           #3d3028;
       --text-secondary: #6b5d4f;
-      --border: #588157;
-      --error: #c44536;
-      --success: #588157;
-      --warning: #c4a35a;
+      --gold:           #c4a35a;
+      --gold-light:     #f0e0c0;
+      --white:          #ffffff;
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
+    html { scroll-behavior: smooth; }
     body {
       font-family: 'Roboto', sans-serif;
+      color: var(--text);
       background: var(--bg);
-      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
-    /* Nav */
+    /* ── SCROLL REVEAL ───────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1),
+                  transform 0.7s cubic-bezier(0.16,1,0.3,1);
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal.d1 { transition-delay: 0.1s; }
+    .reveal.d2 { transition-delay: 0.2s; }
+    .reveal.d3 { transition-delay: 0.3s; }
+    .reveal.d4 { transition-delay: 0.4s; }
+
+    /* ── NAV ─────────────────────────────────────── */
     nav {
-      background: var(--surface);
-      padding: 16px 48px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(245,241,232,0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--primary-light);
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      padding: 0 56px; height: 68px;
+      display: flex; align-items: center; justify-content: space-between;
     }
-    .logo {
+    .nav-logo {
       font-family: 'Poppins', sans-serif;
-      font-weight: 700;
-      font-size: 28px;
-      color: var(--primary-dark);
-      text-decoration: none;
+      font-weight: 700; font-size: 20px;
+      color: var(--text); text-decoration: none; letter-spacing: -0.3px;
     }
-    .logo span { color: var(--secondary); }
-    .logo-group { display: flex; flex-direction: column; align-items: center; text-decoration: none; }
-    .logo-tagline {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600;
-      font-size: 10px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--text);
-      margin-top: -2px;
+    .nav-cta {
+      background: var(--primary-dark); color: var(--white);
+      font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 14px;
+      padding: 10px 22px; border-radius: 100px; text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
     }
-    .nav-links { display: flex; gap: 32px; align-items: center; }
-    .nav-links a {
-      font-family: 'Roboto', sans-serif;
-      font-weight: 500;
-      color: var(--text-secondary);
-      text-decoration: none;
-      font-size: 15px;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--primary-dark); }
-    .nav-actions { display: flex; gap: 12px; align-items: center; }
-    .btn {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600;
-      font-size: 14px;
-      padding: 10px 24px;
-      border-radius: 25px;
-      border: none;
-      cursor: pointer;
-      transition: all 0.2s;
-      text-decoration: none;
-      display: inline-block;
-    }
-    .btn-outline {
-      background: transparent;
-      border: 2px solid var(--primary);
-      color: var(--primary-dark);
-    }
-    .btn-outline:hover { background: var(--primary-light); }
-    .btn-primary {
-      background: var(--primary);
-      color: var(--bg);
-    }
-    .btn-primary:hover { background: var(--primary-dark); }
-    .icon-btn {
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-size: 20px;
-      color: var(--text-secondary);
-      position: relative;
-    }
-    .icon-btn:hover { color: var(--primary-dark); }
-    .badge {
-      position: absolute;
-      top: -6px;
-      right: -6px;
-      background: var(--error);
-      color: white;
-      font-size: 10px;
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-    }
+    .nav-cta:hover { background: var(--text); transform: translateY(-1px); }
 
-    /* Hero */
+    /* ── HERO ────────────────────────────────────── */
     .hero {
-      padding: 80px 48px;
-      text-align: center;
-      background: linear-gradient(135deg, var(--primary-light) 0%, var(--bg) 50%, #d8cee0 100%);
+      max-width: 1240px; margin: 0 auto;
+      padding: 96px 56px 80px;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 56px; align-items: center;
+      min-height: calc(100vh - 68px);
+    }
+    .hero-eyebrow {
+      display: inline-block; font-size: 12px; font-weight: 500;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--primary-dark); margin-bottom: 22px;
     }
     .hero h1 {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 700;
-      font-size: 52px;
-      color: var(--text);
-      margin-bottom: 16px;
-      line-height: 1.15;
+      font-family: 'Poppins', sans-serif; font-weight: 700;
+      font-size: 66px; line-height: 1.07; letter-spacing: -2px;
+      color: var(--text); margin-bottom: 26px;
     }
-    .hero h1 em {
-      font-style: normal;
-      color: var(--primary-dark);
+    .hero h1 em { font-style: normal; color: var(--primary-dark); }
+    .hero-sub {
+      font-size: 18px; line-height: 1.75; color: var(--text-secondary);
+      max-width: 460px; margin-bottom: 44px;
     }
-    .hero p {
-      font-size: 18px;
-      color: var(--text-secondary);
-      max-width: 560px;
-      margin: 0 auto 32px;
-      line-height: 1.6;
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+    .btn-store {
+      display: inline-flex; align-items: center; gap: 11px;
+      font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 14px;
+      padding: 13px 24px; border-radius: 14px; text-decoration: none;
+      transition: all 0.2s; line-height: 1;
     }
-    .hero-actions { display: flex; gap: 16px; justify-content: center; }
+    .btn-dark { background: var(--text); color: var(--white); }
+    .btn-dark:hover { background: var(--primary-dark); transform: translateY(-1px); }
+    .btn-outline { background: transparent; color: var(--text); border: 2px solid var(--primary-light); }
+    .btn-outline:hover { border-color: var(--primary); background: var(--primary-light); }
+    .btn-icon { font-size: 20px; }
+    .btn-label { display: flex; flex-direction: column; gap: 2px; }
+    .btn-label .sub { font-size: 10px; font-weight: 400; opacity: 0.65; }
+    .btn-label .main { font-size: 15px; }
 
-    /* Sections */
-    .section {
-      padding: 64px 48px;
+    /* ── HERO PHONE ──────────────────────────────── */
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-14px); }
     }
-    .section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 32px;
+    @keyframes shadowPulse {
+      0%, 100% { box-shadow: 0 60px 100px rgba(61,48,40,0.22), 0 0 0 1px rgba(255,255,255,0.06) inset; }
+      50%       { box-shadow: 0 80px 130px rgba(61,48,40,0.12), 0 0 0 1px rgba(255,255,255,0.06) inset; }
     }
-    .section-header h2 {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 700;
-      font-size: 28px;
-      color: var(--text);
+    @keyframes shimmer {
+      0%   { transform: translateX(-120%) skewX(-18deg); }
+      100% { transform: translateX(220%)  skewX(-18deg); }
     }
-    .section-header a {
-      color: var(--primary-dark);
-      font-weight: 500;
-      text-decoration: none;
-    }
-    .section-header a:hover { text-decoration: underline; }
-
-    /* Categories */
-    .categories-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-      gap: 16px;
-    }
-    .category-card {
-      background: var(--surface);
-      border-radius: 16px;
-      padding: 24px 16px;
-      text-align: center;
-      cursor: pointer;
-      transition: all 0.2s;
-      border: 1px solid transparent;
-    }
-    .category-card:hover {
-      border-color: var(--primary);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
-    }
-    .category-icon { font-size: 36px; margin-bottom: 8px; }
-    .category-card h3 {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600;
-      font-size: 14px;
-      color: var(--text);
-    }
-    .category-card p {
-      font-size: 12px;
-      color: var(--text-secondary);
-      margin-top: 4px;
+    @keyframes badgeIn {
+      from { opacity: 0; transform: translateX(12px) scale(0.95); }
+      to   { opacity: 1; transform: none; }
     }
 
-    /* Listing Grid */
-    .listings-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 20px;
+    .hero-visual { display: flex; justify-content: center; align-items: center; }
+
+    .phone-scene { position: relative; }
+    .glow-blob {
+      position: absolute; width: 500px; height: 500px;
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: radial-gradient(circle at 38% 42%,
+        rgba(163,177,138,0.5) 0%,
+        rgba(184,161,196,0.32) 42%,
+        transparent 68%);
+      filter: blur(52px);
+      pointer-events: none; z-index: 0;
     }
-    .listing-card {
-      background: var(--surface);
-      border-radius: 16px;
-      overflow: hidden;
-      cursor: pointer;
-      transition: all 0.2s;
-      border: 1px solid transparent;
-    }
-    .listing-card:hover {
-      border-color: var(--primary-light);
-      transform: translateY(-3px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-    }
-    .listing-img {
-      width: 100%;
-      height: 280px;
-      background: var(--primary-light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 48px;
+
+    .phone-wrap { position: relative; z-index: 1; animation: float 5s ease-in-out infinite; }
+    .phone {
+      width: 295px; height: 614px;
+      background: #1c1c1e; border-radius: 50px; padding: 14px;
+      animation: shadowPulse 5s ease-in-out infinite;
       position: relative;
     }
-    .listing-badge {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      background: var(--primary);
-      color: var(--bg);
-      font-size: 11px;
-      font-weight: 700;
-      padding: 4px 10px;
-      border-radius: 12px;
+    .phone-notch {
+      position: absolute; top: 14px; left: 50%; transform: translateX(-50%);
+      width: 116px; height: 34px; background: #1c1c1e;
+      border-radius: 0 0 22px 22px; z-index: 2;
     }
-    .listing-wishlist {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      background: rgba(250,248,243,0.9);
-      border: none;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.2s;
-    }
-    .listing-wishlist:hover { background: var(--error); color: white; }
-    .listing-info { padding: 14px; }
-    .listing-brand {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      color: var(--text-secondary);
-      font-weight: 500;
-    }
-    .listing-title {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600;
-      font-size: 15px;
-      color: var(--text);
-      margin-top: 2px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .listing-meta {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-top: 8px;
-    }
-    .listing-price {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 700;
-      font-size: 18px;
-      color: var(--primary-dark);
-    }
-    .listing-price .original {
-      font-size: 13px;
-      color: var(--text-secondary);
-      text-decoration: line-through;
-      font-weight: 400;
-      margin-left: 6px;
-    }
-    .listing-size {
-      font-size: 13px;
-      color: var(--text-secondary);
-    }
-    .listing-condition {
-      font-size: 11px;
-      color: var(--text-secondary);
-      margin-top: 4px;
+    .phone-screen {
+      width: 100%; height: 100%; border-radius: 38px;
+      overflow: hidden; background: var(--bg);
+      display: flex; flex-direction: column;
     }
 
-    /* How It Works */
-    .how-it-works {
-      background: var(--surface);
+    /* status bar inside phone */
+    .app-statusbar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 18px 4px; flex-shrink: 0;
     }
-    .steps-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 32px;
-      text-align: center;
+    .app-statusbar .time {
+      font-family: 'Poppins', sans-serif; font-size: 13px;
+      font-weight: 600; color: var(--text);
     }
-    .step-icon {
-      width: 64px;
-      height: 64px;
-      background: var(--primary-light);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 28px;
-      margin: 0 auto 16px;
+    .app-statusbar .icons { font-size: 12px; color: var(--text-secondary); letter-spacing: 2px; }
+
+    /* swipe card stack */
+    .swipe-area {
+      flex: 1; padding: 6px 12px 0; position: relative; overflow: hidden;
+    }
+    .swipe-card-behind {
+      position: absolute; bottom: -8px; left: 22px; right: 22px;
+      height: 340px; background: var(--secondary-light);
+      border-radius: 18px; transform: rotate(2.5deg);
+      box-shadow: 0 4px 16px rgba(61,48,40,0.08);
+    }
+    .swipe-card {
+      position: relative; background: var(--white);
+      border-radius: 18px; overflow: hidden;
+      box-shadow: 0 8px 32px rgba(61,48,40,0.14);
+    }
+    .swipe-img {
+      height: 208px;
+      background: linear-gradient(155deg, #c8d4bc 0%, #a3b18a 45%, #6b8f6b 100%);
+      position: relative; overflow: hidden;
+    }
+    .swipe-img::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.18) 50%, transparent 100%);
+      animation: shimmer 4s ease-in-out infinite 0.5s;
+      pointer-events: none;
+    }
+    .dress-silhouette {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .swipe-img-top {
+      position: absolute; top: 10px; left: 10px; right: 10px;
+      display: flex; justify-content: space-between; align-items: flex-start; z-index: 1;
+    }
+    .fit-chip {
+      background: var(--primary-dark); color: var(--white);
+      font-family: 'Poppins', sans-serif; font-size: 10px; font-weight: 600;
+      padding: 4px 10px; border-radius: 100px;
+    }
+    .save-chip {
+      background: rgba(255,255,255,0.9); color: var(--text);
+      font-family: 'Poppins', sans-serif; font-size: 10px; font-weight: 600;
+      padding: 4px 9px; border-radius: 100px;
+      display: flex; align-items: center; gap: 4px;
+    }
+    .swipe-img-bottom {
+      position: absolute; bottom: 10px; left: 12px;
+      display: flex; gap: 5px; z-index: 1;
+    }
+    .swatch {
+      width: 16px; height: 16px; border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.8);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+    }
+    .swipe-seller {
+      display: flex; align-items: center; gap: 7px;
+      padding: 8px 14px; border-top: 1px solid var(--bg);
+    }
+    .seller-dot {
+      width: 22px; height: 22px; border-radius: 50%;
+      background: var(--primary-dark); color: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Poppins', sans-serif; font-size: 10px; font-weight: 700; flex-shrink: 0;
+    }
+    .seller-mini-name { font-family: 'Poppins', sans-serif; font-size: 11px; font-weight: 600; color: var(--text); }
+    .seller-mini-stars { font-size: 10px; color: var(--gold); margin-left: auto; }
+    .swipe-info { padding: 11px 14px 8px; }
+    .swipe-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+    .swipe-name {
+      font-family: 'Poppins', sans-serif; font-size: 13.5px;
+      font-weight: 600; color: var(--text);
+    }
+    .swipe-price {
+      font-family: 'Poppins', sans-serif; font-size: 14px;
+      font-weight: 700; color: var(--primary-dark);
+    }
+    .swipe-brand { font-size: 11px; color: var(--text-secondary); }
+    .swipe-tags { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
+    .tag-pill {
+      font-size: 10px; font-weight: 500; padding: 3px 9px;
+      border-radius: 100px; background: var(--bg); color: var(--text-secondary);
+      border: 1px solid var(--primary-light);
+    }
+    .swipe-actions {
+      display: flex; align-items: center; justify-content: center;
+      gap: 20px; padding: 10px 14px 14px;
+    }
+    .swipe-btn {
+      width: 48px; height: 48px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; border: none; cursor: pointer;
+      box-shadow: 0 4px 14px rgba(61,48,40,0.12);
+      transition: transform 0.2s;
+    }
+    .swipe-btn:hover { transform: scale(1.08); }
+    .btn-pass { background: #fff0f0; }
+    .btn-like { background: #f0fff4; }
+
+    /* floating hero badges */
+    .hero-badge {
+      position: absolute; background: var(--white); border-radius: 16px;
+      padding: 11px 15px; box-shadow: 0 8px 30px rgba(61,48,40,0.13);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .hb-right { right: -54px; top: 20%; width: 175px; animation: badgeIn 0.6s cubic-bezier(0.16,1,0.3,1) 0.8s both; }
+    .hb-left  { left:  -54px; bottom: 6%; width: 170px; animation: badgeIn 0.6s cubic-bezier(0.16,1,0.3,1) 1.3s both; }
+    .hb-icon {
+      width: 36px; height: 36px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 17px; flex-shrink: 0;
+    }
+    .hb-green  { background: #e0ead6; }
+    .hb-purple { background: #ede5f5; }
+    .hb-text strong {
+      font-family: 'Poppins', sans-serif; font-size: 12px; font-weight: 600;
+      color: var(--text); display: block; line-height: 1.3;
+    }
+    .hb-text span { font-size: 10.5px; color: var(--text-secondary); }
+
+    /* ── SECTION SHARED ──────────────────────────── */
+    .section      { padding: 108px 56px; }
+    .section-inner{ max-width: 1120px; margin: 0 auto; }
+    .bg-surface   { background: var(--surface); }
+    .bg-main      { background: var(--bg); }
+    .eyebrow {
+      font-size: 11.5px; font-weight: 500; letter-spacing: 2.5px;
+      text-transform: uppercase; color: var(--primary-dark); margin-bottom: 14px;
+    }
+    .section-title {
+      font-family: 'Poppins', sans-serif; font-weight: 700;
+      font-size: 44px; letter-spacing: -1.2px; line-height: 1.12;
+      color: var(--text); margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 17px; line-height: 1.75; color: var(--text-secondary);
+      max-width: 520px; margin-bottom: 64px;
+    }
+
+    /* ── HOW IT WORKS ────────────────────────────── */
+    .steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+    .step {
+      background: var(--bg); border-radius: 24px; padding: 36px 30px;
+      border: 1px solid var(--primary-light);
+    }
+    .step-num {
+      width: 46px; height: 46px; background: var(--primary-dark);
+      color: var(--white); border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 20px;
+      margin-bottom: 22px;
     }
     .step h3 {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600;
-      font-size: 16px;
-      margin-bottom: 8px;
+      font-family: 'Poppins', sans-serif; font-weight: 600;
+      font-size: 19px; color: var(--text); margin-bottom: 10px;
     }
-    .step p {
-      font-size: 14px;
-      color: var(--text-secondary);
-      line-height: 1.5;
+    .step p { font-size: 15px; line-height: 1.7; color: var(--text-secondary); }
+
+    /* ── FEATURE LAYOUT ──────────────────────────── */
+    .feature {
+      max-width: 1120px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+    }
+    .feature.flip { direction: rtl; }
+    .feature.flip > * { direction: ltr; }
+
+    .feature-text .eyebrow { margin-bottom: 12px; }
+    .feature-text h2 {
+      font-family: 'Poppins', sans-serif; font-weight: 700;
+      font-size: 36px; letter-spacing: -0.8px; line-height: 1.2;
+      color: var(--text); margin-bottom: 18px;
+    }
+    .feature-text p { font-size: 17px; line-height: 1.8; color: var(--text-secondary); }
+
+    /* card composition wrapper */
+    .card-scene {
+      position: relative; display: flex;
+      align-items: center; justify-content: center;
+      padding: 28px 24px;
+    }
+    .card-behind {
+      position: absolute; border-radius: 22px;
+      pointer-events: none;
+    }
+    .app-card {
+      position: relative; z-index: 2;
+      background: var(--white); border-radius: 22px;
+      box-shadow: 0 20px 60px rgba(61,48,40,0.13);
+      width: 100%; overflow: hidden;
+      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1),
+                  box-shadow 0.4s cubic-bezier(0.16,1,0.3,1);
+    }
+    .app-card:hover {
+      transform: translateY(-6px) rotate(0deg) !important;
+      box-shadow: 0 32px 80px rgba(61,48,40,0.18);
     }
 
-    /* CTA Banner */
-    .cta-banner {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-      padding: 64px 48px;
-      text-align: center;
+    /* ── FEATURE 1: FIT MATCHING ─────────────────── */
+    .fit-card { transform: rotate(-1.5deg); }
+    .fit-behind {
+      inset: 12px -12px -12px 12px;
+      background: var(--secondary-light); transform: rotate(2deg);
     }
-    .cta-banner h2 {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 700;
-      font-size: 32px;
-      color: var(--bg);
-      margin-bottom: 12px;
+    .fit-card-header {
+      display: flex; align-items: center; gap: 12px;
+      padding: 18px 20px; border-bottom: 1px solid var(--bg);
     }
-    .cta-banner p {
-      color: var(--bg);
-      opacity: 0.9;
-      margin-bottom: 24px;
-      font-size: 16px;
+    .fit-thumb {
+      width: 48px; height: 48px; border-radius: 12px; flex-shrink: 0;
+      background: linear-gradient(135deg, #c8d4bc, #a3b18a);
     }
-    .cta-banner .btn-primary {
-      background: var(--bg);
-      color: var(--primary-dark);
+    .fit-header-text .item-name {
+      font-family: 'Poppins', sans-serif; font-size: 14px;
+      font-weight: 600; color: var(--text);
     }
-    .cta-banner .btn-primary:hover {
-      background: white;
+    .fit-header-text .item-sub { font-size: 12px; color: var(--text-secondary); margin-top: 2px; }
+    .fit-table { width: 100%; padding: 6px 0; }
+    .fit-row {
+      display: grid; grid-template-columns: 1fr 72px 72px 40px;
+      align-items: center; padding: 9px 20px;
+      font-size: 13px; color: var(--text-secondary);
+      border-bottom: 1px solid var(--bg);
     }
-
-    /* App Download */
-    .app-download {
-      padding: 72px 48px;
-      text-align: center;
-      background: var(--bg);
+    .fit-row:last-child { border-bottom: none; }
+    .fit-row-header {
+      font-family: 'Poppins', sans-serif; font-size: 10.5px;
+      font-weight: 600; color: var(--text-secondary);
+      text-transform: uppercase; letter-spacing: 1.2px;
+      padding: 8px 20px 6px;
+      display: grid; grid-template-columns: 1fr 72px 72px 40px;
+      border-bottom: 1px solid var(--bg);
     }
-    .app-download h2 {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 700;
-      font-size: 32px;
-      color: var(--text);
-      margin-bottom: 8px;
+    .fit-label { font-weight: 500; color: var(--text); }
+    .fit-match { color: var(--primary-dark); font-size: 15px; font-weight: 700; text-align: center; }
+    .fit-neutral { color: var(--text-secondary); text-align: center; }
+    .fit-banner {
+      background: var(--primary-dark); padding: 12px 20px;
+      display: flex; align-items: center; gap: 10px;
     }
-    .app-download p {
-      font-size: 16px;
-      color: var(--text-secondary);
-      margin-bottom: 32px;
-      max-width: 480px;
-      margin-left: auto;
-      margin-right: auto;
-      line-height: 1.5;
+    .fit-banner-icon { font-size: 18px; }
+    .fit-banner-text {
+      font-family: 'Poppins', sans-serif; font-size: 13px;
+      font-weight: 600; color: var(--white);
     }
-    .store-buttons {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-      flex-wrap: wrap;
+    .fit-banner-sub { font-size: 11px; color: rgba(255,255,255,0.7); }
+    /* floating pill */
+    .fit-pill {
+      position: absolute; top: 10px; right: 0;
+      background: var(--white); border-radius: 100px;
+      padding: 7px 14px 7px 10px;
+      box-shadow: 0 6px 20px rgba(61,48,40,0.13);
+      display: flex; align-items: center; gap: 7px;
+      font-family: 'Poppins', sans-serif; font-size: 12px;
+      font-weight: 600; color: var(--text); z-index: 3;
     }
-    .store-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      padding: 14px 28px;
-      border-radius: 14px;
-      background: var(--text);
-      color: var(--bg);
-      text-decoration: none;
-      transition: all 0.2s;
-      min-width: 200px;
-    }
-    .store-btn:hover {
-      background: #2a2219;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-    }
-    .store-btn-icon {
-      font-size: 28px;
-      line-height: 1;
-    }
-    .store-btn-text {
-      text-align: left;
-    }
-    .store-btn-label {
-      font-size: 11px;
-      opacity: 0.7;
-      display: block;
-    }
-    .store-btn-name {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600;
-      font-size: 17px;
-      display: block;
+    .fit-pill-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--primary-dark); flex-shrink: 0;
     }
 
-    /* Footer */
-    footer {
-      background: var(--text);
-      color: var(--primary-light);
-      padding: 48px;
+    /* ── FEATURE 2: NEGOTIATION ──────────────────── */
+    .offer-card { transform: rotate(1.5deg); }
+    .offer-behind {
+      inset: 12px 12px -12px -12px;
+      background: var(--gold-light); transform: rotate(-2deg);
     }
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 48px;
-      margin-bottom: 32px;
+    .offer-card-header {
+      display: flex; align-items: center; gap: 12px;
+      padding: 16px 18px; border-bottom: 1px solid var(--bg);
+      background: var(--surface);
     }
-    .footer-brand .logo { color: var(--primary-light); }
-    .footer-brand p {
-      font-size: 14px;
-      margin-top: 8px;
-      line-height: 1.5;
-      color: #9a8b7c;
+    .offer-thumb {
+      width: 44px; height: 44px; border-radius: 10px; flex-shrink: 0;
+      background: linear-gradient(135deg, #e8dff0, #b8a1c4);
     }
-    footer h4 {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600;
-      font-size: 14px;
-      margin-bottom: 16px;
-      color: var(--primary-light);
+    .offer-header-text .o-name {
+      font-family: 'Poppins', sans-serif; font-size: 13px;
+      font-weight: 600; color: var(--text);
     }
-    footer ul { list-style: none; }
-    footer li { margin-bottom: 8px; }
-    footer li a {
-      color: #9a8b7c;
-      text-decoration: none;
-      font-size: 14px;
-      transition: color 0.2s;
+    .offer-header-text .o-listed { font-size: 11px; color: var(--text-secondary); margin-top: 2px; }
+    .offer-thread { padding: 16px 18px; display: flex; flex-direction: column; gap: 10px; }
+    .thread-bubble {
+      max-width: 80%; padding: 10px 14px; border-radius: 16px;
+      font-size: 13px; line-height: 1.5;
+      opacity: 0; transform: translateY(8px) scale(0.97);
     }
-    footer li a:hover { color: var(--primary-light); }
-    .footer-bottom {
-      border-top: 1px solid #5a4a3a;
-      padding-top: 24px;
-      display: flex;
-      justify-content: space-between;
-      font-size: 13px;
-      color: #7a6b5c;
+    .thread-bubble.buyer {
+      align-self: flex-end; background: var(--primary-dark); color: var(--white);
+      border-bottom-right-radius: 4px;
+    }
+    .thread-bubble.seller {
+      align-self: flex-start; background: var(--bg); color: var(--text);
+      border-bottom-left-radius: 4px;
+    }
+    .thread-bubble .b-amount {
+      font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 16px;
+      display: block; margin-bottom: 2px;
+    }
+    .thread-bubble .b-label { font-size: 11px; opacity: 0.75; }
+    .thread-status {
+      margin: 0 18px 16px;
+      background: #f0fff4; border: 1px solid #c8d4bc;
+      border-radius: 12px; padding: 11px 14px;
+      display: flex; align-items: center; gap: 10px;
+      opacity: 0; transform: translateY(8px);
+    }
+    .thread-status-icon { font-size: 18px; }
+    .thread-status-text .s-title {
+      font-family: 'Poppins', sans-serif; font-size: 13px;
+      font-weight: 600; color: var(--primary-dark);
+    }
+    .thread-status-text .s-sub { font-size: 11px; color: var(--text-secondary); margin-top: 1px; }
+
+    /* thread play animation — triggered by JS */
+    .offer-card.playing .thread-bubble {
+      animation: bubbleIn 0.4s cubic-bezier(0.16,1,0.3,1) forwards;
+    }
+    .offer-card.playing .thread-bubble.b1 { animation-delay: 0.15s; }
+    .offer-card.playing .thread-bubble.b2 { animation-delay: 0.85s; }
+    .offer-card.playing .thread-bubble.b3 { animation-delay: 1.6s; }
+    .offer-card.playing .thread-status {
+      animation: bubbleIn 0.4s cubic-bezier(0.16,1,0.3,1) 2.3s forwards;
+    }
+    @keyframes bubbleIn {
+      to { opacity: 1; transform: none; }
     }
 
+    /* ── FEATURE 3: SELLER TRUST ─────────────────── */
+    .seller-card { transform: rotate(-1.5deg); }
+    .seller-behind {
+      inset: 12px -12px -12px 12px;
+      background: var(--gold-light); transform: rotate(2.5deg);
+    }
+    .seller-top {
+      display: flex; align-items: center; gap: 14px;
+      padding: 20px 20px 16px; border-bottom: 1px solid var(--bg);
+    }
+    .seller-avatar {
+      width: 52px; height: 52px; border-radius: 50%;
+      background: var(--primary-dark); color: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 20px;
+      flex-shrink: 0;
+    }
+    .seller-name {
+      font-family: 'Poppins', sans-serif; font-size: 15px;
+      font-weight: 700; color: var(--text);
+    }
+    .seller-handle { font-size: 12px; color: var(--text-secondary); margin-top: 1px; }
+    .seller-stars { display: flex; align-items: center; gap: 5px; margin-top: 4px; }
+    .star-row { color: var(--gold); font-size: 13px; letter-spacing: 1px; }
+    .star-score {
+      font-family: 'Poppins', sans-serif; font-size: 12px;
+      font-weight: 600; color: var(--text);
+    }
+    .star-count { font-size: 11px; color: var(--text-secondary); }
+    .seller-badges { display: flex; gap: 8px; flex-wrap: wrap; padding: 14px 20px; border-bottom: 1px solid var(--bg); }
+    .seller-badge {
+      display: flex; align-items: center; gap: 5px;
+      background: var(--bg); border: 1px solid var(--primary-light);
+      border-radius: 100px; padding: 5px 11px;
+      font-size: 11.5px; font-weight: 500; color: var(--text);
+    }
+    .seller-reviews { padding: 14px 20px; display: flex; flex-direction: column; gap: 10px; }
+    .mini-review {
+      background: var(--bg); border-radius: 12px;
+      padding: 11px 14px;
+    }
+    .mini-review-text { font-size: 12.5px; color: var(--text); line-height: 1.5; margin-bottom: 5px; }
+    .mini-review-author {
+      font-size: 11px; color: var(--text-secondary);
+      display: flex; align-items: center; gap: 6px;
+    }
+    .mini-stars { color: var(--gold); font-size: 10px; }
+
+    /* ── FEATURE 4: SELLING ──────────────────────── */
+    .listing-card { transform: rotate(1.5deg); }
+    .listing-behind {
+      inset: 12px 12px -12px -12px;
+      background: var(--secondary-light); transform: rotate(-2deg);
+    }
+    .listing-photos {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 3px; padding: 16px 16px 0;
+    }
+    .photo-cell {
+      aspect-ratio: 1; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .photo-filled-1 { background: linear-gradient(135deg, #c8d4bc, #a3b18a); }
+    .photo-filled-2 { background: linear-gradient(135deg, #e8dff0, #b8a1c4); }
+    .photo-filled-3 { background: linear-gradient(135deg, #f0e0c0, #c4a35a); }
+    .photo-filled-4 { background: linear-gradient(135deg, #c8d4bc, #588157); }
+    .photo-filled-5 { background: linear-gradient(135deg, #e0d4ec, #9b7db3); }
+    .photo-add {
+      background: var(--bg); border: 2px dashed var(--primary-light);
+      font-size: 22px; color: var(--primary-light);
+    }
+    .listing-fields { padding: 14px 16px 0; }
+    .field-row { margin-bottom: 10px; }
+    .field-label {
+      font-size: 10px; font-weight: 500; letter-spacing: 1px;
+      text-transform: uppercase; color: var(--text-secondary); margin-bottom: 4px;
+    }
+    .field-value {
+      font-family: 'Poppins', sans-serif; font-size: 13.5px;
+      font-weight: 600; color: var(--text);
+    }
+    .field-inline { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 10px; }
+    .field-block {
+      background: var(--bg); border-radius: 10px;
+      padding: 9px 12px; border: 1px solid var(--primary-light);
+    }
+    .measurements-row {
+      display: flex; gap: 6px; flex-wrap: wrap;
+      padding: 10px 16px;
+    }
+    .meas-chip {
+      background: var(--bg); border: 1px solid var(--primary-light);
+      border-radius: 100px; padding: 5px 11px;
+      font-size: 11.5px; color: var(--text); font-weight: 500;
+    }
+    .listing-submit {
+      margin: 10px 16px 16px;
+      background: var(--primary-dark); color: var(--white);
+      border: none; border-radius: 12px; padding: 13px;
+      width: calc(100% - 0px); font-family: 'Poppins', sans-serif;
+      font-size: 14px; font-weight: 600; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+
+    /* ── TESTIMONIALS ────────────────────────────── */
+    .testi-bg { background: #eee8f5; }
+    .testi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
+    .testi-card {
+      background: var(--white); border-radius: 22px;
+      padding: 32px 28px; display: flex; flex-direction: column; gap: 18px;
+    }
+    .stars { color: var(--gold); font-size: 16px; letter-spacing: 3px; }
+    .testi-quote { font-size: 15.5px; line-height: 1.72; color: var(--text); flex: 1; }
+    .testi-author { display: flex; align-items: center; gap: 12px; }
+    .avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Poppins', sans-serif; font-weight: 700;
+      font-size: 15px; color: var(--white); flex-shrink: 0;
+    }
+    .av-g { background: var(--primary-dark); }
+    .av-p { background: var(--secondary); }
+    .av-o { background: var(--gold); }
+    .author-name {
+      font-family: 'Poppins', sans-serif; font-size: 13.5px;
+      font-weight: 600; color: var(--text); display: block;
+    }
+    .author-loc { font-size: 12px; color: var(--text-secondary); }
+
+    /* ── DOWNLOAD CTA ────────────────────────────── */
+    .dl-section {
+      background: var(--primary-dark); text-align: center; padding: 108px 56px;
+    }
+    .dl-section h2 {
+      font-family: 'Poppins', sans-serif; font-weight: 700;
+      font-size: 52px; letter-spacing: -1.2px; color: var(--white); margin-bottom: 18px;
+    }
+    .dl-section p {
+      font-size: 18px; color: rgba(255,255,255,0.7);
+      margin-bottom: 48px; max-width: 460px;
+      margin-left: auto; margin-right: auto; line-height: 1.65;
+    }
+    .dl-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-dl {
+      display: inline-flex; align-items: center; gap: 12px;
+      background: rgba(255,255,255,0.1); color: var(--white);
+      border: 2px solid rgba(255,255,255,0.28);
+      font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 15px;
+      padding: 16px 30px; border-radius: 16px; text-decoration: none;
+      transition: all 0.2s; line-height: 1;
+    }
+    .btn-dl:hover { background: rgba(255,255,255,0.18); border-color: rgba(255,255,255,0.55); transform: translateY(-1px); }
+    .btn-dl-icon { font-size: 24px; }
+    .btn-dl-label { display: flex; flex-direction: column; gap: 3px; }
+    .btn-dl-label .sub { font-size: 10px; font-weight: 400; opacity: 0.65; }
+
+    /* ── FOOTER ──────────────────────────────────── */
+    footer { background: var(--text); padding: 44px 56px 32px; }
+    .footer-top {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 24px; padding-bottom: 32px;
+      border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 24px;
+    }
+    .footer-brand {
+      font-family: 'Poppins', sans-serif; font-weight: 700;
+      font-size: 19px; color: var(--white);
+    }
+    .footer-links { display: flex; gap: 32px; flex-wrap: wrap; }
+    .footer-links a {
+      color: rgba(255,255,255,0.55); text-decoration: none;
+      font-size: 14px; transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--white); }
+    .footer-copy { text-align: center; font-size: 13px; color: rgba(255,255,255,0.3); }
+
+    /* ── RESPONSIVE ──────────────────────────────── */
+    @media (max-width: 1100px) {
+      .hb-right, .hb-left { display: none; }
+      .feature { gap: 48px; }
+    }
+    @media (max-width: 1024px) {
+      nav { padding: 0 32px; }
+      .hero { padding: 72px 32px; gap: 36px; }
+      .hero h1 { font-size: 50px; }
+      .section { padding: 80px 32px; }
+      .section-title { font-size: 36px; }
+    }
     @media (max-width: 768px) {
-      nav { padding: 12px 20px; }
-      .nav-links { display: none; }
-      .hero { padding: 48px 20px; }
-      .hero h1 { font-size: 32px; }
-      .section { padding: 40px 20px; }
-      .steps-grid { grid-template-columns: repeat(2, 1fr); }
-      .footer-grid { grid-template-columns: 1fr 1fr; }
+      nav { padding: 0 20px; }
+      .hero {
+        grid-template-columns: 1fr; padding: 52px 20px 60px;
+        text-align: center; min-height: unset; gap: 44px;
+      }
+      .hero h1 { font-size: 42px; letter-spacing: -1.2px; }
+      .hero-sub { max-width: 100%; margin-left: auto; margin-right: auto; }
+      .hero-actions { justify-content: center; }
+      .hero-visual { order: -1; }
+      .phone { width: 240px; height: 500px; border-radius: 40px; }
+      .section { padding: 64px 20px; }
+      .section-title { font-size: 28px; letter-spacing: -0.6px; }
+      .steps { grid-template-columns: 1fr; }
+      .feature, .feature.flip { grid-template-columns: 1fr; direction: ltr; gap: 28px; }
+      .feature-text h2 { font-size: 26px; }
+      .card-scene { padding: 16px 8px; }
+      .testi-grid { grid-template-columns: 1fr; }
+      .dl-section { padding: 72px 20px; }
+      .dl-section h2 { font-size: 34px; }
+      footer { padding: 36px 20px 28px; }
+      .footer-top { flex-direction: column; align-items: flex-start; }
+      .fit-row-header, .fit-row { font-size: 12px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Nav -->
-  <nav>
-    <div class="logo-group">
-      <a href="index.html" class="logo">Re<span>Find</span></a>
-      <span class="logo-tagline">Style. Swipe. Shop.</span>
-    </div>
-    <div class="nav-links">
-      <a href="features.html">Features</a>
-      <a href="#download">Download</a>
-    </div>
-    <div class="nav-actions">
-      <a href="#download" class="btn btn-primary">Get the App</a>
-    </div>
-  </nav>
+<!-- ── NAV ──────────────────────────────────────────── -->
+<nav>
+  <a href="/" class="nav-logo">ReFind</a>
+  <a href="#download" class="nav-cta">Download the App</a>
+</nav>
 
-  <!-- Hero -->
-  <section class="hero">
-    <p style="font-family:'Poppins',sans-serif;font-weight:600;font-size:16px;letter-spacing:3px;text-transform:uppercase;color:var(--secondary);margin-bottom:12px;">Style. Swipe. Shop.</p>
-    <h1>Find <em>pre-loved</em> pieces<br>that fit <em>you</em></h1>
-    <p>Discover women's clothing matched to your style and measurements. Buy, sell, and make offers — all in one place.</p>
-    <div class="hero-actions">
-      <a href="#download" class="btn btn-primary" style="padding: 14px 36px; font-size: 16px;">Get the App</a>
-      <a href="features.html" class="btn btn-outline" style="padding: 14px 36px; font-size: 16px;">See Features</a>
+<!-- ── HERO ─────────────────────────────────────────── -->
+<div style="background:var(--bg)">
+  <div class="hero">
+    <div class="hero-text">
+      <span class="hero-eyebrow reveal">Pre-loved fashion, reimagined</span>
+      <h1 class="reveal d1">ReFind<br>your <em>style.</em></h1>
+      <p class="hero-sub reveal d2">Shop pre-loved clothing matched to your size and taste. Make offers, message sellers, and get it shipped — all in one place.</p>
+      <div class="hero-actions reveal d3">
+        <a href="#download" class="btn-store btn-dark">
+          <span class="btn-icon">🍎</span>
+          <span class="btn-label"><span class="sub">Download on the</span><span class="main">App Store</span></span>
+        </a>
+        <a href="#download" class="btn-store btn-outline">
+          <span class="btn-icon">▶</span>
+          <span class="btn-label"><span class="sub">Get it on</span><span class="main">Google Play</span></span>
+        </a>
+      </div>
     </div>
-  </section>
 
-  <!-- How It Works -->
-  <section class="section how-it-works">
-    <div class="section-header">
-      <h2>How It Works</h2>
-    </div>
-    <div class="steps-grid">
-      <div class="step">
-        <div class="step-icon">&#128269;</div>
-        <h3>Browse</h3>
-        <p>Explore thousands of pre-loved pieces filtered to your size, style, and measurements.</p>
-      </div>
-      <div class="step">
-        <div class="step-icon">&#128176;</div>
-        <h3>Buy or Offer</h3>
-        <p>Purchase at listed price or make an offer. Negotiate directly with sellers.</p>
-      </div>
-      <div class="step">
-        <div class="step-icon">&#128230;</div>
-        <h3>Get It Shipped</h3>
-        <p>Prepaid labels via USPS, UPS, FedEx, or DHL. Continental US delivery.</p>
-      </div>
-      <div class="step">
-        <div class="step-icon">&#127881;</div>
-        <h3>Enjoy</h3>
-        <p>Confirm receipt, rate your seller, and show off your find!</p>
-      </div>
-    </div>
-  </section>
+    <div class="hero-visual reveal d2">
+      <div class="phone-scene">
+        <div class="glow-blob"></div>
+        <div class="phone-wrap">
+          <div class="phone">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <div class="app-statusbar">
+                <span class="time">9:41</span>
+                <span class="icons">▲ ◉ ▌▌</span>
+              </div>
+              <div class="swipe-area">
+                <div class="swipe-card-behind"></div>
+                <div class="swipe-card">
+                  <div class="swipe-img">
+                    <div class="dress-silhouette">
+                      <svg width="90" height="130" viewBox="0 0 90 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="28" y="0" width="12" height="36" rx="6" fill="rgba(255,255,255,0.4)"/>
+                        <rect x="50" y="0" width="12" height="36" rx="6" fill="rgba(255,255,255,0.4)"/>
+                        <path d="M24 34 C24 34 36 28 45 28 C54 28 66 34 66 34 L70 72 C70 72 58 68 45 68 C32 68 20 72 20 72 Z" fill="rgba(255,255,255,0.38)"/>
+                        <path d="M20 70 L4 130 L86 130 L70 70 C62 74 54 76 45 76 C36 76 28 74 20 70 Z" fill="rgba(255,255,255,0.25)"/>
+                      </svg>
+                    </div>
+                    <div class="swipe-img-top">
+                      <span class="fit-chip">✓ Fits you</span>
+                      <span class="save-chip">♥ 24</span>
+                    </div>
+                    <div class="swipe-img-bottom">
+                      <div class="swatch" style="background:#3d3028"></div>
+                      <div class="swatch" style="background:#a3b18a"></div>
+                      <div class="swatch" style="background:#b8a1c4"></div>
+                      <div class="swatch" style="background:#c4a35a"></div>
+                    </div>
+                  </div>
+                  <div class="swipe-info">
+                    <div class="swipe-row">
+                      <div>
+                        <div class="swipe-name">Silk Slip Dress</div>
+                        <div class="swipe-brand">Reformation · Size S</div>
+                      </div>
+                      <div class="swipe-price">$48</div>
+                    </div>
+                    <div class="swipe-tags">
+                      <span class="tag-pill">Very Good</span>
+                      <span class="tag-pill">Free shipping</span>
+                      <span class="tag-pill">Returns OK</span>
+                    </div>
+                  </div>
+                  <div class="swipe-seller">
+                    <div class="seller-dot">M</div>
+                    <div class="seller-mini-name">@mayasells</div>
+                    <div class="seller-mini-stars">★★★★★ 4.9</div>
+                  </div>
+                  <div class="swipe-actions">
+                    <button class="swipe-btn btn-pass">✕</button>
+                    <button class="swipe-btn btn-like">♥</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
-  <!-- CTA -->
-  <section class="cta-banner">
-    <h2>Your closet could be someone's next find</h2>
-    <p>List your items in minutes. We handle the shipping labels. You keep 87%.</p>
-    <a href="#download" class="btn btn-primary" style="padding: 14px 36px; font-size: 16px;">Start Selling</a>
-  </section>
-
-  <!-- App Download -->
-  <section class="app-download" id="download">
-    <h2>Get the App</h2>
-    <p>The full ReFind experience — swipe discovery, fit matching, and instant notifications — right in your pocket.</p>
-    <div class="store-buttons">
-      <a href="#" class="store-btn">
-        <span class="store-btn-icon">&#63743;</span>
-        <span class="store-btn-text">
-          <span class="store-btn-label">Download on the</span>
-          <span class="store-btn-name">App Store</span>
-        </span>
-      </a>
-      <a href="#" class="store-btn">
-        <span class="store-btn-icon">&#9654;</span>
-        <span class="store-btn-text">
-          <span class="store-btn-label">Get it on</span>
-          <span class="store-btn-name">Google Play</span>
-        </span>
-      </a>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <div class="footer-grid" style="grid-template-columns: 2fr 1fr 1fr;">
-      <div class="footer-brand">
-        <a href="index.html" class="logo">Re<span>Find</span></a>
-        <p>Style. Swipe. Shop. A women's clothing marketplace for pre-loved fashion.</p>
-      </div>
-      <div>
-        <h4>Product</h4>
-        <ul>
-          <li><a href="features.html">Features</a></li>
-          <li><a href="#download">Download</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Legal</h4>
-        <ul>
-          <li><a href="privacy.html">Privacy Policy</a></li>
-          <li><a href="terms.html">Terms of Service</a></li>
-          <li><a href="mailto:support@refindapp.com">Contact</a></li>
-        </ul>
+          <div class="hero-badge hb-right">
+            <div class="hb-icon hb-green">✓</div>
+            <div class="hb-text">
+              <strong>Fit matched</strong>
+              <span>Your measurements</span>
+            </div>
+          </div>
+          <div class="hero-badge hb-left">
+            <div class="hb-icon hb-purple">💬</div>
+            <div class="hb-text">
+              <strong>Offer accepted!</strong>
+              <span>Ships tomorrow</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="footer-bottom">
-      <span>&copy; 2026 ReFind. All rights reserved.</span>
-      <span>Continental US Only</span>
-    </div>
-  </footer>
+  </div>
+</div>
 
+<!-- ── HOW IT WORKS ──────────────────────────────────── -->
+<section class="section bg-surface">
+  <div class="section-inner">
+    <p class="eyebrow reveal">How it works</p>
+    <h2 class="section-title reveal d1">Three steps to your next favorite piece</h2>
+    <p class="section-sub reveal d2">From discovery to doorstep, ReFind handles the details so you can focus on the find.</p>
+    <div class="steps">
+      <div class="step reveal d1">
+        <div class="step-num">1</div>
+        <h3>Swipe to discover</h3>
+        <p>Browse a curated feed filtered to your style preferences and actual measurements. No more size guesswork.</p>
+      </div>
+      <div class="step reveal d2">
+        <div class="step-num">2</div>
+        <h3>Make your offer</h3>
+        <p>Love something? Buy outright or send an offer. Real negotiation with real sellers — no bots, no pressure.</p>
+      </div>
+      <div class="step reveal d3">
+        <div class="step-num">3</div>
+        <h3>Get it shipped</h3>
+        <p>Sellers ship fast with tracking included. Your new piece arrives at your door, exactly as described.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FEATURE 1: FIT MATCHING ───────────────────────── -->
+<section class="section bg-main">
+  <div class="feature">
+    <div class="card-scene reveal">
+      <div class="card-behind fit-behind"></div>
+      <div class="app-card fit-card">
+        <div class="fit-card-header">
+          <div class="fit-thumb"></div>
+          <div class="fit-header-text">
+            <div class="item-name">Linen Wide-Leg Trousers</div>
+            <div class="item-sub">Aritzia · Size M · $62 · Excellent</div>
+          </div>
+        </div>
+        <div class="fit-row-header">
+          <span>Measurement</span><span>Item</span><span>You</span><span></span>
+        </div>
+        <div class="fit-table">
+          <div class="fit-row">
+            <span class="fit-label">Waist</span><span>30"</span><span>29"</span>
+            <span class="fit-match">✓</span>
+          </div>
+          <div class="fit-row">
+            <span class="fit-label">Hips</span><span>40"</span><span>39"</span>
+            <span class="fit-match">✓</span>
+          </div>
+          <div class="fit-row">
+            <span class="fit-label">Inseam</span><span>31"</span><span>30"</span>
+            <span class="fit-match">✓</span>
+          </div>
+          <div class="fit-row">
+            <span class="fit-label">Rise</span><span>11"</span><span>—</span>
+            <span class="fit-neutral">–</span>
+          </div>
+        </div>
+        <div class="fit-banner">
+          <span class="fit-banner-icon">✓</span>
+          <div>
+            <div class="fit-banner-text">Great fit · 3 of 4 measurements match</div>
+            <div class="fit-banner-sub">This item is likely to fit you well</div>
+          </div>
+        </div>
+      </div>
+      <div class="fit-pill reveal d2">
+        <div class="fit-pill-dot"></div>
+        4 more matches in your feed
+      </div>
+    </div>
+
+    <div class="feature-text reveal d1">
+      <p class="eyebrow">Fit matching</p>
+      <h2>Size "medium" actually means something here.</h2>
+      <p>Enter your measurements once. ReFind compares them against every listing so you only see clothes that will actually fit — not just be labeled your size.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── FEATURE 2: NEGOTIATION ────────────────────────── -->
+<section class="section bg-surface">
+  <div class="feature flip">
+    <div class="card-scene reveal">
+      <div class="card-behind offer-behind"></div>
+      <div class="app-card offer-card" id="offerCard">
+        <div class="offer-card-header">
+          <div class="offer-thumb"></div>
+          <div class="offer-header-text">
+            <div class="o-name">Floral Midi Dress</div>
+            <div class="o-listed">Listed at $85 · Size S</div>
+          </div>
+        </div>
+        <div class="offer-thread">
+          <div class="thread-bubble buyer b1">
+            <span class="b-amount">$65</span>
+            <span class="b-label">Your offer</span>
+          </div>
+          <div class="thread-bubble seller b2">
+            <span class="b-amount">$75</span>
+            <span class="b-label">Seller's counter · "It's in perfect condition!"</span>
+          </div>
+          <div class="thread-bubble buyer b3">
+            <span class="b-amount">$75 · Deal 🤝</span>
+            <span class="b-label">You accepted</span>
+          </div>
+        </div>
+        <div class="thread-status">
+          <span class="thread-status-icon">🎉</span>
+          <div class="thread-status-text">
+            <div class="s-title">Offer accepted · $75</div>
+            <div class="s-sub">Saved $10 off asking price · Payment processing</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature-text reveal d1">
+      <p class="eyebrow">Real negotiation</p>
+      <h2>Make an offer. Counter it. Actually talk to the seller.</h2>
+      <p>Send an offer below asking price, counter back and forth, or accept on the spot. No algorithms declining you in milliseconds — just two people agreeing on a fair price.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── FEATURE 3: SELLER TRUST ───────────────────────── -->
+<section class="section bg-main">
+  <div class="feature">
+    <div class="card-scene reveal">
+      <div class="card-behind seller-behind"></div>
+      <div class="app-card seller-card">
+        <div class="seller-top">
+          <div class="seller-avatar">M</div>
+          <div>
+            <div class="seller-name">Maya Chen</div>
+            <div class="seller-handle">@mayasells · Charlotte, NC</div>
+            <div class="seller-stars">
+              <span class="star-row">★★★★★</span>
+              <span class="star-score">4.9</span>
+              <span class="star-count">(142 reviews)</span>
+            </div>
+          </div>
+        </div>
+        <div class="seller-badges">
+          <span class="seller-badge">⚡ Ships same day</span>
+          <span class="seller-badge">✓ As described</span>
+          <span class="seller-badge">💬 Fast replies</span>
+        </div>
+        <div class="seller-reviews">
+          <div class="mini-review">
+            <div class="mini-review-text">"Perfect condition, shipped same day. Packaging was beautiful — felt like a gift."</div>
+            <div class="mini-review-author">
+              <span class="mini-stars">★★★★★</span> Jordan K. · 3 days ago
+            </div>
+          </div>
+          <div class="mini-review">
+            <div class="mini-review-text">"Measurements were spot-on. Fits exactly like she said it would."</div>
+            <div class="mini-review-author">
+              <span class="mini-stars">★★★★★</span> Sofia L. · 1 week ago
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature-text reveal d1">
+      <p class="eyebrow">Seller trust</p>
+      <h2>Know exactly who you're buying from.</h2>
+      <p>Every seller profile shows their rating, average ship time, and review history — before you buy. No surprises when the package arrives.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── FEATURE 4: SELLING ────────────────────────────── -->
+<section class="section bg-surface">
+  <div class="feature flip">
+    <div class="card-scene reveal">
+      <div class="card-behind listing-behind"></div>
+      <div class="app-card listing-card">
+        <div class="listing-photos">
+          <div class="photo-cell photo-filled-1"></div>
+          <div class="photo-cell photo-filled-2"></div>
+          <div class="photo-cell photo-filled-3"></div>
+          <div class="photo-cell photo-filled-4"></div>
+          <div class="photo-cell photo-filled-5"></div>
+          <div class="photo-cell photo-add">+</div>
+        </div>
+        <div class="listing-fields">
+          <div class="field-row">
+            <div class="field-label">Item name</div>
+            <div class="field-value">Silk Midi Dress</div>
+          </div>
+          <div class="field-inline">
+            <div class="field-block">
+              <div class="field-label">Price</div>
+              <div class="field-value">$48</div>
+            </div>
+            <div class="field-block">
+              <div class="field-label">Size</div>
+              <div class="field-value">M</div>
+            </div>
+            <div class="field-block">
+              <div class="field-label">Condition</div>
+              <div class="field-value">Good</div>
+            </div>
+          </div>
+        </div>
+        <div class="measurements-row">
+          <span class="meas-chip">Bust 36"</span>
+          <span class="meas-chip">Waist 28"</span>
+          <span class="meas-chip">Length 42"</span>
+          <span class="meas-chip">Shoulder 15"</span>
+        </div>
+        <button class="listing-submit">List Item →</button>
+      </div>
+    </div>
+
+    <div class="feature-text reveal d1">
+      <p class="eyebrow">For sellers</p>
+      <h2>Your closet earns. List in minutes.</h2>
+      <p>Ten photos, a few measurements, your price. Buyers find you through fit matching — not just keyword search. Ship with a generated label. Get paid directly to your bank.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ──────────────────────────────────── -->
+<section class="section testi-bg">
+  <div class="section-inner">
+    <p class="eyebrow reveal">From the community</p>
+    <h2 class="section-title reveal d1">People who found their style</h2>
+    <p class="section-sub reveal d2">Early users share what it's like to shop — and sell — on ReFind.</p>
+    <div class="testi-grid">
+      <div class="testi-card reveal d1">
+        <div class="stars">★★★★★</div>
+        <p class="testi-quote">"I've tried every resale app out there. ReFind is the first one where I actually trust that something will fit when I order it. The measurement matching is a game-changer."</p>
+        <div class="testi-author">
+          <div class="avatar av-g">M</div>
+          <div><span class="author-name">Maya R.</span><span class="author-loc">Buyer · Atlanta, GA</span></div>
+        </div>
+      </div>
+      <div class="testi-card reveal d2">
+        <div class="stars">★★★★★</div>
+        <p class="testi-quote">"I listed 12 items from my closet on a Sunday afternoon. Had offers on four of them by Monday morning. The app makes selling feel completely effortless."</p>
+        <div class="testi-author">
+          <div class="avatar av-p">J</div>
+          <div><span class="author-name">Jordan K.</span><span class="author-loc">Seller · Nashville, TN</span></div>
+        </div>
+      </div>
+      <div class="testi-card reveal d3">
+        <div class="stars">★★★★★</div>
+        <p class="testi-quote">"The negotiation is so good. I made an offer, the seller countered, we met in the middle. Felt like a real conversation — not a bot declining me before I finished typing."</p>
+        <div class="testi-author">
+          <div class="avatar av-o">S</div>
+          <div><span class="author-name">Sofia L.</span><span class="author-loc">Buyer & Seller · Charlotte, NC</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── DOWNLOAD CTA ───────────────────────────────────── -->
+<section class="dl-section" id="download">
+  <h2 class="reveal">Ready to ReFind?</h2>
+  <p class="reveal d1">Join a growing community of fashion lovers buying and selling smarter.</p>
+  <div class="dl-btns reveal d2">
+    <a href="#" class="btn-dl">
+      <span class="btn-dl-icon">🍎</span>
+      <span class="btn-dl-label"><span class="sub">Download on the</span><span>App Store</span></span>
+    </a>
+    <a href="#" class="btn-dl">
+      <span class="btn-dl-icon">▶</span>
+      <span class="btn-dl-label"><span class="sub">Get it on</span><span>Google Play</span></span>
+    </a>
+  </div>
+</section>
+
+<!-- ── FOOTER ────────────────────────────────────────── -->
+<footer>
+  <div class="footer-top">
+    <span class="footer-brand">ReFind</span>
+    <div class="footer-links">
+      <a href="/about">About</a>
+      <a href="/privacy">Privacy Policy</a>
+      <a href="/terms">Terms of Service</a>
+      <a href="mailto:support@refindapp.com">Contact</a>
+    </div>
+  </div>
+  <p class="footer-copy">© 2026 ReFind · ReFind Retail, LLC · All rights reserved.</p>
+</footer>
+
+<script>
+  // ── Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => revealObs.observe(el));
+
+  // ── Offer thread animation (plays once when section scrolls into view)
+  const offerCard = document.getElementById('offerCard');
+  const offerObs = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
+      offerCard.classList.add('playing');
+      offerObs.disconnect();
+    }
+  }, { threshold: 0.5 });
+  offerObs.observe(offerCard);
+</script>
 </body>
 </html>

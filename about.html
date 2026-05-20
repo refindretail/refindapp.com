@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — ReFind</title>
+  <meta name="description" content="ReFind is a marketplace for pre-loved clothing built around fit, trust, and real offers. Made by ReFind Retail, LLC.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --primary:        #a3b18a;
+      --primary-light:  #c8d4bc;
+      --primary-dark:   #588157;
+      --bg:             #f5f1e8;
+      --surface:        #faf8f3;
+      --text:           #3d3028;
+      --text-secondary: #6b5d4f;
+      --white:          #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(245, 241, 232, 0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--primary-light);
+      padding: 0 56px;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.3px;
+    }
+
+    .nav-home {
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-home:hover { color: var(--text); }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--primary-light);
+      padding: 56px 56px 48px;
+    }
+
+    .page-header-inner { max-width: 760px; margin: 0 auto; }
+
+    .page-header .badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--primary-dark);
+      background: var(--primary-light);
+      padding: 5px 12px;
+      border-radius: 100px;
+      margin-bottom: 20px;
+    }
+
+    .page-header h1 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 40px;
+      letter-spacing: -1px;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .page-header .meta {
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    /* ── CONTENT ── */
+    .content-wrapper {
+      padding: 64px 56px 100px;
+    }
+
+    .content {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .content h2 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 20px;
+      color: var(--text);
+      margin-top: 48px;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--primary-light);
+    }
+
+    .content p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+    }
+
+    .content p:last-child { margin-bottom: 0; }
+
+    .content a {
+      color: var(--primary-dark);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .content a:hover { color: var(--text); }
+
+    .content strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    /* ── CALLOUT ── */
+    .callout {
+      background: var(--surface);
+      border-left: 3px solid var(--primary);
+      border-radius: 0 10px 10px 0;
+      padding: 20px 24px;
+      margin: 32px 0;
+    }
+
+    .callout p {
+      margin-bottom: 0;
+      font-size: 15px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--text);
+      padding: 44px 56px 32px;
+    }
+
+    .footer-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      margin-bottom: 24px;
+    }
+
+    .footer-brand {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 19px;
+      color: var(--white);
+    }
+
+    .footer-links { display: flex; gap: 32px; flex-wrap: wrap; }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--white); }
+
+    .footer-copy {
+      text-align: center;
+      font-size: 13px;
+      color: rgba(255,255,255,0.3);
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .page-header { padding: 40px 20px 36px; }
+      .page-header h1 { font-size: 28px; }
+      .content-wrapper { padding: 40px 20px 72px; }
+      footer { padding: 36px 20px 28px; }
+      .footer-top { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">ReFind</a>
+  <a href="/" class="nav-home">← Back to home</a>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <span class="badge">Company</span>
+    <h1>About ReFind</h1>
+    <p class="meta">ReFind is a product of ReFind Retail, LLC</p>
+  </div>
+</div>
+
+<div class="content-wrapper">
+  <div class="content">
+
+    <h2>Who we are</h2>
+    <p>ReFind is a mobile marketplace for buying and selling pre-loved clothing — built around fit, trust, and real offers. We believe secondhand fashion should feel as seamless as buying new, and that every closet has pieces worth giving a second life.</p>
+    <p>ReFind is developed and operated by <strong>ReFind Retail, LLC</strong>, a company based in North Carolina.</p>
+
+    <div class="callout">
+      <p><strong>ReFind Retail, LLC</strong> is the legal entity behind the ReFind app and this website. All terms, privacy commitments, and business correspondence fall under ReFind Retail, LLC.</p>
+    </div>
+
+    <h2>What makes ReFind different</h2>
+    <p>Most secondhand apps let you browse endlessly without knowing if anything will actually fit. ReFind flips that — your measurements come first. Every listing you see is already filtered to your size and body type, so you're only browsing things that can realistically work for you.</p>
+    <p>When you find something you love, you can make a real offer, message the seller directly, and get it shipped with a label generated in the app. No external links, no "dm for price" — the whole transaction lives inside ReFind.</p>
+
+    <h2>Our values</h2>
+    <p><strong>Sustainability.</strong> Extending the life of clothing is one of the most impactful things individuals can do for the environment. We're building tools that make it easy — and worth it financially — to keep clothes circulating instead of ending up in landfills.</p>
+    <p><strong>Fairness.</strong> Sellers keep the majority of every sale. Our platform fee covers payment processing, shipping infrastructure, and keeping the marketplace safe — not extracting margin from people clearing out their closets.</p>
+    <p><strong>Trust.</strong> Every seller has a public rating. Every listing goes through image moderation. Buyers can make offers, ask questions, and read reviews before committing. We want every transaction to feel safe on both sides.</p>
+
+    <h2>Contact us</h2>
+    <p>For support, questions, or business inquiries, reach us at <a href="mailto:support@refindapp.com">support@refindapp.com</a>.</p>
+    <p>For legal or compliance matters, please reference our <a href="/privacy">Privacy Policy</a> and <a href="/terms">Terms of Service</a>.</p>
+
+  </div>
+</div>
+
+<footer>
+  <div class="footer-top">
+    <span class="footer-brand">ReFind</span>
+    <div class="footer-links">
+      <a href="/about">About</a>
+      <a href="/privacy">Privacy Policy</a>
+      <a href="/terms">Terms of Service</a>
+      <a href="mailto:support@refindapp.com">Contact</a>
+    </div>
+  </div>
+  <p class="footer-copy">© 2026 ReFind · ReFind Retail, LLC · All rights reserved.</p>
+</footer>
+
+</body>
+</html>

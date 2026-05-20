@@ -4,126 +4,240 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Terms of Service — ReFind</title>
-  <link rel="icon" type="image/png" href="/favicon.png">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <meta name="description" content="ReFind Terms of Service — the rules governing your use of the ReFind marketplace.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --primary: #a3b18a; --primary-light: #c8d4bc; --primary-dark: #7a8c68;
-      --secondary: #b8a1c4; --bg: #f5f1e8; --surface: #faf8f3;
-      --text: #3d3028; --text-secondary: #6b5d4f;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Roboto', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
-    nav { background: var(--surface); padding: 16px 48px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--primary-light); position: sticky; top: 0; z-index: 100; }
-    .logo { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 28px; color: var(--primary-dark); text-decoration: none; }
-    .logo span { color: var(--secondary); }
-    .logo-group { display: flex; flex-direction: column; align-items: center; text-decoration: none; }
-    .logo-tagline { font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text); margin-top: -2px; }
-    .nav-links { display: flex; gap: 32px; }
-    .nav-links a { font-weight: 500; color: var(--text-secondary); text-decoration: none; font-size: 15px; }
-    .nav-links a:hover { color: var(--primary-dark); }
-    .btn { font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 14px; padding: 10px 24px; border-radius: 25px; border: none; cursor: pointer; text-decoration: none; display: inline-block; }
-    .btn-primary { background: var(--primary); color: var(--bg); }
-    .btn-primary:hover { background: var(--primary-dark); }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-    .page-header {
-      padding: 64px 48px 32px;
-      text-align: center;
-      background: linear-gradient(135deg, var(--primary-light) 0%, var(--bg) 100%);
+    :root {
+      --primary:        #a3b18a;
+      --primary-light:  #c8d4bc;
+      --primary-dark:   #588157;
+      --bg:             #f5f1e8;
+      --surface:        #faf8f3;
+      --text:           #3d3028;
+      --text-secondary: #6b5d4f;
+      --white:          #ffffff;
     }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(245, 241, 232, 0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--primary-light);
+      padding: 0 56px;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.3px;
+    }
+
+    .nav-home {
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-home:hover { color: var(--text); }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--primary-light);
+      padding: 56px 56px 48px;
+    }
+
+    .page-header-inner { max-width: 760px; margin: 0 auto; }
+
+    .page-header .badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--primary-dark);
+      background: var(--primary-light);
+      padding: 5px 12px;
+      border-radius: 100px;
+      margin-bottom: 20px;
+    }
+
     .page-header h1 {
       font-family: 'Poppins', sans-serif;
       font-weight: 700;
       font-size: 40px;
+      letter-spacing: -1px;
       color: var(--text);
-      margin-bottom: 8px;
+      margin-bottom: 12px;
     }
-    .page-header .effective {
+
+    .page-header .meta {
       font-size: 14px;
       color: var(--text-secondary);
     }
 
-    .content {
-      max-width: 780px;
-      margin: 0 auto;
-      padding: 48px 32px 80px;
+    /* ── CONTENT ── */
+    .content-wrapper {
+      padding: 64px 56px 100px;
     }
+
+    .content {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
     .content h2 {
       font-family: 'Poppins', sans-serif;
-      font-weight: 700;
-      font-size: 22px;
-      color: var(--primary-dark);
-      margin-top: 40px;
-      margin-bottom: 12px;
-    }
-    .content h2:first-child { margin-top: 0; }
-    .content p {
-      margin-bottom: 16px;
+      font-weight: 600;
+      font-size: 20px;
       color: var(--text);
-      font-size: 15px;
+      margin-top: 48px;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--primary-light);
     }
+
+    .content h3 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 16px;
+      color: var(--text);
+      margin-top: 28px;
+      margin-bottom: 8px;
+    }
+
+    .content p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+    }
+
+    .content p:last-child { margin-bottom: 0; }
+
     .content a {
       color: var(--primary-dark);
       text-decoration: underline;
+      text-underline-offset: 2px;
     }
-    .content a:hover { color: var(--secondary); }
-    .content .caps { text-transform: uppercase; font-weight: 600; font-size: 13px; letter-spacing: 0.5px; }
+    .content a:hover { color: var(--text); }
 
-    footer { background: var(--text); color: var(--primary-light); padding: 48px; }
-    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 32px; max-width: 1200px; margin-left: auto; margin-right: auto; }
-    .footer-brand .logo { color: var(--primary-light); }
-    .footer-brand p { font-size: 14px; margin-top: 8px; line-height: 1.5; color: #9a8b7c; }
-    footer h4 { font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 14px; margin-bottom: 16px; color: var(--primary-light); }
-    footer ul { list-style: none; }
-    footer li { margin-bottom: 8px; }
-    footer li a { color: #9a8b7c; text-decoration: none; font-size: 14px; }
-    footer li a:hover { color: var(--primary-light); }
-    .footer-bottom { border-top: 1px solid #5a4a3a; padding-top: 24px; display: flex; justify-content: space-between; font-size: 13px; color: #7a6b5c; max-width: 1200px; margin: 0 auto; }
+    .content .callout {
+      background: var(--surface);
+      border-left: 4px solid var(--primary);
+      border-radius: 0 12px 12px 0;
+      padding: 18px 22px;
+      margin: 20px 0;
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--text);
+      padding: 44px 56px 32px;
+    }
+
+    .footer-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      margin-bottom: 24px;
+    }
+
+    .footer-brand {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 19px;
+      color: var(--white);
+    }
+
+    .footer-links { display: flex; gap: 32px; flex-wrap: wrap; }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--white); }
+
+    .footer-copy {
+      text-align: center;
+      font-size: 13px;
+      color: rgba(255,255,255,0.3);
+    }
 
     @media (max-width: 768px) {
-      nav { padding: 12px 20px; }
-      .nav-links { display: none; }
-      .page-header { padding: 40px 20px 24px; }
+      nav { padding: 0 20px; }
+      .page-header { padding: 40px 20px 36px; }
       .page-header h1 { font-size: 28px; }
-      .content { padding: 32px 20px 60px; }
-      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .content-wrapper { padding: 40px 20px 72px; }
+      footer { padding: 36px 20px 28px; }
+      .footer-top { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
 <body>
 
-  <nav>
-    <div class="logo-group">
-      <a href="index.html" class="logo">Re<span>Find</span></a>
-      <span class="logo-tagline">Style. Swipe. Shop.</span>
-    </div>
-    <div class="nav-links">
-      <a href="features.html">Features</a>
-      <a href="index.html#download">Download</a>
-    </div>
-    <div class="nav-actions">
-      <a href="index.html#download" class="btn btn-primary">Get the App</a>
-    </div>
-  </nav>
+<nav>
+  <a href="/" class="nav-logo">ReFind</a>
+  <a href="/" class="nav-home">← Back to home</a>
+</nav>
 
-  <section class="page-header">
+<div class="page-header">
+  <div class="page-header-inner">
+    <span class="badge">Legal</span>
     <h1>Terms of Service</h1>
-    <p class="effective">Effective Date: March 24, 2026</p>
-  </section>
+    <p class="meta">Effective Date: March 24, 2026</p>
+  </div>
+</div>
 
-  <article class="content">
+<div class="content-wrapper">
+  <div class="content">
+
     <p>Welcome to ReFind! These Terms of Service ("Terms") govern your access to and use of the ReFind mobile application and website at <a href="https://www.refindapp.com/">https://www.refindapp.com/</a> (collectively, the "Service"), operated by ReFind ("we," "us," or "our"). By accessing or using the Service, you agree to be bound by these Terms. If you do not agree, do not use the Service.</p>
 
     <h2>1. Acceptance of Terms</h2>
-    <p>By creating an account or using the Service, you acknowledge that you have read, understood, and agree to these Terms and our Privacy Policy. We may update these Terms from time to time, and your continued use of the Service after changes are posted constitutes acceptance of the updated Terms.</p>
+    <p>By creating an account or using the Service, you acknowledge that you have read, understood, and agree to these Terms and our <a href="/privacy">Privacy Policy</a>. We may update these Terms from time to time, and your continued use of the Service after changes are posted constitutes acceptance of the updated Terms.</p>
 
-    <h2>2. Eligibility & Account Registration</h2>
+    <h2>2. Eligibility &amp; Account Registration</h2>
     <p>You must be at least 13 years old to use ReFind. If you are between 13 and 17, you may only use the Service with the consent and supervision of a parent or legal guardian. You must be at least 18 years old to sell items on ReFind.</p>
     <p>When you create an account, you agree to provide accurate, current, and complete information. You are responsible for maintaining the confidentiality of your account credentials and for all activity that occurs under your account. Notify us immediately if you suspect unauthorized access.</p>
 
     <h2>3. The ReFind Marketplace</h2>
-    <p>ReFind is a peer-to-peer marketplace platform that enables users to buy and sell pre-owned women's clothing and accessories. ReFind is not a party to any transaction between buyers and sellers. We do not own, possess, inspect, or control the items listed on the platform. We are not an auctioneer, consignment shop, or traditional retailer.</p>
+    <p>ReFind is a peer-to-peer marketplace platform that enables users to buy and sell pre-owned clothing and accessories. ReFind is not a party to any transaction between buyers and sellers. We do not own, possess, inspect, or control the items listed on the platform. We are not an auctioneer, consignment shop, or traditional retailer.</p>
     <p>All transactions are directly between buyers and sellers. ReFind facilitates the connection and provides tools for listing, payment processing, and communication, but we do not guarantee the quality, safety, legality, or accuracy of any listing.</p>
 
     <h2>4. Buying on ReFind</h2>
@@ -134,24 +248,24 @@
     <h2>5. Selling on ReFind</h2>
     <p>By listing an item for sale, you represent and warrant that you own the item (or have the right to sell it), that the item matches your listing description, and that the sale complies with all applicable laws.</p>
     <p>Sellers are responsible for setting accurate prices, providing truthful descriptions and photos, responding to buyer inquiries, shipping items promptly after a sale, and packaging items appropriately for transit.</p>
-    <p>ReFind charges a 13% service fee on each sale, calculated on the item subtotal (excluding shipping). This fee is deducted before the remaining amount is released to the seller. Seller payouts are processed via Stripe Connect. You must set up a Stripe Connect account to receive payouts.</p>
+    <div class="callout">ReFind charges a <strong>13% service fee</strong> on each sale, calculated on the item subtotal (excluding shipping). This fee is deducted before the remaining amount is released to the seller. Seller payouts are processed via Stripe Connect. You must set up a Stripe Connect account to receive payouts.</div>
 
-    <h2>6. Prohibited Items & Conduct</h2>
-    <p>The following items are prohibited on ReFind: counterfeit or replica items, stolen goods, items that violate intellectual property rights, hazardous materials, weapons, drugs, or controlled substances, items that are illegal to sell in your jurisdiction, and non-clothing items unless explicitly permitted.</p>
-    <p>The following conduct is prohibited: harassment, threats, or abusive behavior toward other users, creating fake accounts or listings, manipulating reviews or ratings, circumventing the payment system to avoid fees, scraping, crawling, or automated access to the Service, spam or unsolicited commercial messages, and any activity that violates applicable law.</p>
+    <h2>6. Prohibited Items &amp; Conduct</h2>
+    <p>The following items are prohibited on ReFind: counterfeit or replica items, stolen goods, items that violate intellectual property rights, hazardous materials, weapons, drugs or controlled substances, items that are illegal to sell in your jurisdiction, and non-clothing items unless explicitly permitted.</p>
+    <p>The following conduct is prohibited: harassment, threats, or abusive behavior toward other users, creating fake accounts or listings, manipulating reviews or ratings, circumventing the payment system to avoid fees, scraping or automated access to the Service, spam or unsolicited commercial messages, and any activity that violates applicable law.</p>
     <p>We reserve the right to remove any listing or content and suspend or terminate any account that violates these rules, at our sole discretion.</p>
 
-    <h2>7. Shipping & Delivery</h2>
+    <h2>7. Shipping &amp; Delivery</h2>
     <p>Sellers are responsible for shipping sold items to buyers. Sellers set their own shipping costs, which are displayed on each listing. Free shipping is at the seller's discretion.</p>
     <p>Sellers must ship items within the timeframe specified or within 7 business days of the sale. Sellers should provide tracking information when available.</p>
     <p>ReFind is not responsible for items lost, damaged, or delayed during shipping. Shipping disputes should first be addressed between buyer and seller.</p>
 
-    <h2>8. Returns, Refunds & Disputes</h2>
+    <h2>8. Returns, Refunds &amp; Disputes</h2>
     <p>If an item is significantly not as described, damaged during shipping, or a counterfeit, the buyer may open a dispute. Disputes must be filed within 3 days of delivery.</p>
     <p>ReFind will review disputes and may mediate between buyer and seller. We reserve the right to issue refunds, partial refunds, or deny claims at our discretion. Refunds, when issued, will be processed to the original payment method.</p>
     <p>Items that are accurately described and simply unwanted by the buyer are generally not eligible for return. We encourage buyers to review listings carefully before purchasing.</p>
 
-    <h2>9. Payments & Fees</h2>
+    <h2>9. Payments &amp; Fees</h2>
     <p>All payments are processed securely through Stripe. By making a purchase, you authorize ReFind and Stripe to charge your selected payment method for the total amount of your order.</p>
     <p>Buyers pay the item price plus shipping. Sellers receive the item price minus the 13% ReFind service fee. The service fee covers platform operations, payment processing, customer support, and ongoing development.</p>
     <p>Seller payouts are processed via Stripe Connect and are subject to Stripe's processing times and requirements. ReFind is not responsible for delays caused by Stripe or your financial institution.</p>
@@ -167,18 +281,18 @@
     <p>If you believe your intellectual property rights have been infringed by content on ReFind, please contact us at <a href="mailto:support@refindapp.com">support@refindapp.com</a> with a detailed description of the alleged infringement.</p>
 
     <h2>12. Privacy</h2>
-    <p>Your privacy is important to us. Our collection, use, and sharing of your personal information is governed by our <a href="privacy.html">Privacy Policy</a>, which is incorporated into these Terms by reference. By using the Service, you consent to our data practices as described in the Privacy Policy.</p>
+    <p>Your privacy is important to us. Our collection, use, and sharing of your personal information is governed by our <a href="/privacy">Privacy Policy</a>, which is incorporated into these Terms by reference. By using the Service, you consent to our data practices as described in the Privacy Policy.</p>
 
-    <h2>13. Limitation of Liability & Disclaimers</h2>
-    <p class="caps">The Service is provided "as is" and "as available" without warranties of any kind, either express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, and non-infringement.</p>
+    <h2>13. Limitation of Liability &amp; Disclaimers</h2>
+    <p>THE SERVICE IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.</p>
     <p>ReFind does not warrant that the Service will be uninterrupted, secure, or error-free. We do not guarantee the accuracy, completeness, or reliability of any content or listings on the platform.</p>
-    <p class="caps">To the maximum extent permitted by law, ReFind's total liability to you for any claims arising out of or relating to these Terms or the Service shall not exceed the greater of (a) the amounts you paid to ReFind in the six months preceding the claim, or (b) one hundred dollars ($100).</p>
-    <p class="caps">ReFind shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to loss of profits, data, or goodwill.</p>
+    <p>TO THE MAXIMUM EXTENT PERMITTED BY LAW, REFIND'S TOTAL LIABILITY TO YOU FOR ANY CLAIMS ARISING OUT OF OR RELATING TO THESE TERMS OR THE SERVICE SHALL NOT EXCEED THE GREATER OF (A) THE AMOUNTS YOU PAID TO REFIND IN THE SIX MONTHS PRECEDING THE CLAIM, OR (B) ONE HUNDRED DOLLARS ($100).</p>
+    <p>REFIND SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING BUT NOT LIMITED TO LOSS OF PROFITS, DATA, OR GOODWILL.</p>
 
     <h2>14. Indemnification</h2>
     <p>You agree to indemnify, defend, and hold harmless ReFind and its officers, directors, employees, and agents from and against any claims, liabilities, damages, losses, costs, or expenses (including reasonable attorneys' fees) arising out of or related to your use of the Service, your violation of these Terms, your content, or your transactions with other users.</p>
 
-    <h2>15. Account Suspension & Termination</h2>
+    <h2>15. Account Suspension &amp; Termination</h2>
     <p>We may suspend or terminate your account at any time, with or without notice, for any reason, including but not limited to violation of these Terms, fraudulent activity, or extended inactivity.</p>
     <p>You may delete your account at any time through the app settings or by contacting us. Upon termination, your right to use the Service ceases immediately. Provisions of these Terms that by their nature should survive termination will remain in effect.</p>
     <p>If your account is terminated while you have pending transactions, we will make reasonable efforts to facilitate completion of those transactions.</p>
@@ -186,7 +300,6 @@
     <h2>16. Dispute Resolution</h2>
     <p>If you have a dispute with ReFind, you agree to first attempt to resolve it informally by contacting us at <a href="mailto:support@refindapp.com">support@refindapp.com</a>. We will attempt to resolve the dispute within 60 days.</p>
     <p>If informal resolution is unsuccessful, any dispute arising out of or relating to these Terms or the Service shall be resolved by binding arbitration, conducted on an individual basis. You agree to waive any right to participate in a class action or class-wide arbitration.</p>
-    <p>Arbitration shall be administered in accordance with applicable arbitration rules. The arbitrator's decision shall be final and binding. Either party may seek enforcement of the arbitration award in any court of competent jurisdiction.</p>
     <p>You may opt out of the arbitration agreement by sending written notice to <a href="mailto:support@refindapp.com">support@refindapp.com</a> within 30 days of creating your account.</p>
 
     <h2>17. Changes to Terms</h2>
@@ -200,35 +313,22 @@
       Website: <a href="https://www.refindapp.com/">https://www.refindapp.com/</a>
     </p>
     <p>Thank you for being part of the ReFind community!</p>
-  </article>
 
-  <footer>
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="index.html" class="logo">Re<span>Find</span></a>
-        <p>Style. Swipe. Shop. A women's clothing marketplace for pre-loved fashion.</p>
-      </div>
-      <div>
-        <h4>Product</h4>
-        <ul>
-          <li><a href="features.html">Features</a></li>
-          <li><a href="index.html#download">Download</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Legal</h4>
-        <ul>
-          <li><a href="privacy.html">Privacy Policy</a></li>
-          <li><a href="terms.html">Terms of Service</a></li>
-          <li><a href="mailto:support@refindapp.com">Contact</a></li>
-        </ul>
-      </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-top">
+    <span class="footer-brand">ReFind</span>
+    <div class="footer-links">
+      <a href="/about">About</a>
+      <a href="/privacy">Privacy Policy</a>
+      <a href="/terms">Terms of Service</a>
+      <a href="mailto:support@refindapp.com">Contact</a>
     </div>
-    <div class="footer-bottom">
-      <span>&copy; 2026 ReFind. All rights reserved.</span>
-      <span>Continental US Only</span>
-    </div>
-  </footer>
+  </div>
+  <p class="footer-copy">© 2026 ReFind · ReFind Retail, LLC · All rights reserved.</p>
+</footer>
 
 </body>
 </html>
